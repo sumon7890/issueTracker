@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="countDivItem" />
+
+    <div id="issueDiv">
+      <div class="countDiv"></div>
+      <div class="countDiv"></div>
+      <div class="countDiv"></div>
+      <div class="countDiv"></div>
+      <div class="countDiv"></div>
+      <div class="countDiv"></div>
+    </div>
+
+    <script>
+      var element = document.getElementById("issueDiv");
+      var numberOfChildren = element.getElementsByTagName("*").length;
+      console.log(numberOfChildren);
+
+      //   const countDiv = document.getElementById("issueDiv");
+      //   let count = 0;
+      //   for (var c in countDiv) {
+      //     count = count + 1;
+      //   }
+      document.getElementById("countDivItem").innerText = count;
+    </script>
+  </body>
+</html>
