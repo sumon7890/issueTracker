@@ -22,20 +22,19 @@ function submitIssue(e) {
   e.preventDefault();
 }
 
-const closeIssue = id => {
+const closeIssue = id1 => {
   const issues = JSON.parse(localStorage.getItem('issues'));
-  const currentIssue = issues.filter(issue => issue.id === id);
+  const currentIssue = issues.find(({ id }) => id == id1);
   currentIssue.status = 'Closed';
   localStorage.setItem('issues', JSON.stringify(issues));
   fetchIssues();
- console.log(issues)
-  
 }
  
 const deleteIssue = id => {
   const issues = JSON.parse(localStorage.getItem('issues'));
-  const remainingIssues = issues.filter( issue.id !== id )
+  const remainingIssues = issues.filter(issue => issue.id != id )
   localStorage.setItem('issues', JSON.stringify(remainingIssues));
+  fetchIssues();
 }
 
 const fetchIssues = () => {
@@ -48,11 +47,10 @@ const fetchIssues = () => {
   for (var i = 0; i < issues.length; i++) {
     count = count + 1 
     const {id, description, severity, assignedTo, status} = issues[i];
-
     issuesList.innerHTML +=   `<div class="well">
                               <h6>Issue ID: ${id} </h6>
                               <p><span class="label label-info"> ${status} </span></p>
-                              <h3 class='${status == "Close"?"overly":""}'> ${description} </h3>
+                              <h3 class='${status == "Closed"?"overly":""}'> ${description} </h3>
                               <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
                               <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
                               <a href="#" onclick="closeIssue(${id})" class="btn btn-warning">Close</a>
@@ -62,3 +60,13 @@ const fetchIssues = () => {
   document.getElementById('counting').innerText = count;
 
 }
+
+var aaa = 're';
+// if (aaa == 're') {
+//     console.log('aaa');
+// }else{
+//   console.log('Not found');
+// }
+
+aaa == 're' ? console.log('aaa') : console.log('Not found')
+
